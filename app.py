@@ -75,8 +75,9 @@ if uploaded_image is not None:
     st.image(image, caption='Uploaded Image', use_column_width=True)
     st.write("Image uploaded successfully.")
 
-if st.button("Analyze Image") and uploaded_image is not None:
-    
+clicked=st.button("Analyze Image")
+
+if clicked and uploaded_image is not None:
     st.write("Analyzing Image...")
     # Perform object detection with YOLO v4
     image_np, detected_objects = detect_objects_yolo(image, net, classes)
@@ -87,4 +88,7 @@ if st.button("Analyze Image") and uploaded_image is not None:
         st.write(f"- {obj}")
 
     # Display the image with bounding boxes and labels
-    st.image(image_np, caption='Detected Objects', use_column_width=True)  
+    st.image(image_np, caption='Detected Objects', use_column_width=True)
+
+if clicked and uploaded_image is None:
+    'Upoload image frist'
